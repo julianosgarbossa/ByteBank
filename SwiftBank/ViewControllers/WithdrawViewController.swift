@@ -78,6 +78,8 @@ class WithdrawViewController: UIViewController {
         if withdrawSuccess {
             delegate?.didPerformOperation()
             showAlert(title: "Saque efetuado", message: "Você sacou \(withdrawValueFormatted) com sucesso.")
+        } else {
+            showAlert(title: "Erro ao sacar", message: "Você não possui saldo suficiente.")
         }
     }
 }
