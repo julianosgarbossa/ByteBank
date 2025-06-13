@@ -27,7 +27,7 @@ class BankAccount: AccountServices {
     var accountNumber: String
     
     private var notificationService = NotificationService()
-    private var transactionsHistoryService = TransactionHistoryService()
+    var transactionsHistoryService = TransactionHistoryService()
     
     init(accountNumber: String) {
         self.accountNumber = accountNumber
