@@ -169,11 +169,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "extractCell", for: indexPath)
         var configuration = cell.defaultContentConfiguration()
-        configuration.text = bankAccount.transactionsHistoryService.transactions[indexPath.row]
+        let text = bankAccount.transactionsHistoryService.transactions[indexPath.row]
+        configuration.text = text
         configuration.secondaryText = Date().formatCurrentDate()
         configuration.textProperties.numberOfLines = 0
         configuration.textProperties.color = Colors.graphite ?? .graphite
         configuration.textProperties.font = .boldSystemFont(ofSize: 16.0)
+        if text.contains("Saque") {
+            configuration.textProperties.color = .red
+        } else {
+            configuration.textProperties.color = .green
+        }
         cell.contentConfiguration = configuration
         return cell
     }
